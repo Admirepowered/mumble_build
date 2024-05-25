@@ -23,8 +23,9 @@ jobs:
         tar -xzvf mumble-1.5.634.tar.gz
     - name: setup env
       run: |  
-        sudo apt-get install protobuf-compiler
-        sudo apt-get install openssl libssl-dev
+        #sudo apt-get install protobuf-compiler
+        #sudo apt-get install openssl libssl-dev
+        sudo apt install build-essential cmake pkg-config qt5-qmake qtbase5-dev qttools5-dev qttools5-dev-tools libqt5svg5-dev libboost-dev libssl-dev libprotobuf-dev protobuf-compiler libprotoc-dev libcap-dev libxi-dev libasound2-dev libogg-dev libsndfile1-dev \libopus-dev libspeechd-dev libavahi-compat-libdnssd-dev libxcb-xinerama0 libzeroc-ice-dev libpoco-dev g++-multilib
         git clone -b main https://github.com/pocoproject/poco.git
         cd poco
         mkdir cmake-build
@@ -32,11 +33,11 @@ jobs:
         cmake ..
         cmake --build . --config Release
         sudo cmake --build . --target install
-    - name: Setup Qt
-      uses: jurplel/install-qt-action@v3
-      with:
-        version: '5.15.*'
-        target: 'desktop'
+    #- name: Setup Qt
+    #  uses: jurplel/install-qt-action@v3
+    #  with:
+    #    version: '5.15.*'
+    #    target: 'desktop'
     - name: Build Qt
       run: |
         cd mumble-1.5.634
