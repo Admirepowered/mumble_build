@@ -28,9 +28,9 @@ jobs:
         git clone -b main https://github.com/pocoproject/poco.git
         cd poco
         mkdir cmake-build
+        cd cmake-build
         cmake ..
         cmake --build . --config Release
-        cd cmake-build
         sudo cmake --build . --target install
     - name: Setup Qt
       uses: jurplel/install-qt-action@v3
