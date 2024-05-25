@@ -42,10 +42,12 @@ jobs:
     - name: Build Qt
       run: |
         cd mumble-1.5.634
-        cmake .
-        make .
+        mkdir build
+        cd build
+        cmake -Dclient=OFF ..
+        make -j $(nproc)
     - name: Upload release
       uses: actions/upload-artifact@v3
       with:
         name: Package
-        path: "./*"
+        path: "./build/*"
