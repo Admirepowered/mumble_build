@@ -33,9 +33,7 @@ jobs:
         #cmake ..
         #cmake --build . --config Release
         #sudo cmake --build . --target install
-        pip install conan
-        git clone -b poco-1.13.3-release https://github.com/pocoproject/poco.git
-        conan install Poco/1.13.3@pocoproject/stable
+        vcpkg install POCO
     #- name: Setup Qt
     #  uses: jurplel/install-qt-action@v3
     #  with:
