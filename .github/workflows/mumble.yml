@@ -11,14 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Clone mumble
-      run: git clone https://github.com/mumble-voip/mumble
     - name: Set up Python 3
       uses: actions/setup-python@v2
       with:
         python-version: 3.8.18
     - name: Check Python Version
       run: python -V
+    - name: Download mumble 
+      run: |
+        wget https://github.com/mumble-voip/mumble/releases/download/v1.5.634/mumble-1.5.634.tar.gz
+        tar -xzvf mumble-1.5.634.tar.gz
     - name: Setup Qt
       uses: jurplel/install-qt-action@v3
       with:
@@ -26,7 +28,7 @@ jobs:
         target: 'desktop'
     - name: Build Qt
       run: |
-        cd mumble
+        cd mumble-1.5.634
         cmake .
         make .
     - name: Upload release
