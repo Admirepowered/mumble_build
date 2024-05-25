@@ -33,7 +33,7 @@ jobs:
         #cmake ..
         #cmake --build . --config Release
         #sudo cmake --build . --target install
-        vcpkg install POCO
+        #vcpkg install POCO
     #- name: Setup Qt
     #  uses: jurplel/install-qt-action@v3
     #  with:
