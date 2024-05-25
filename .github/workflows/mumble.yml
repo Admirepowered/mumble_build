@@ -21,7 +21,17 @@ jobs:
       run: |
         wget https://github.com/mumble-voip/mumble/releases/download/v1.5.634/mumble-1.5.634.tar.gz
         tar -xzvf mumble-1.5.634.tar.gz
+    - name: setup env
+      run: |  
         sudo apt-get install protobuf-compiler
+        sudo apt-get install openssl libssl-dev
+        git clone -b master https://github.com/pocoproject/poco.git
+        cd poco
+        mkdir cmake-build
+        cmake ..
+        cmake --build . --config Release
+        cd cmake-build
+        sudo cmake --build . --target install
     - name: Setup Qt
       uses: jurplel/install-qt-action@v3
       with:
